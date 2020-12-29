@@ -1,0 +1,131 @@
+<!-- Home page start -->
+{% extends 'articles/base.html' %}
+
+{% load static %}
+{% block content %}
+<section class="container-fluid main-article">
+	<div class="row no-gutters">
+		{% for article in  home_top %}
+			<div class="col-lg-8 col-md-6 main-article-img">
+				<img src="{{ article.image.url }}" alt="news">
+			</div>
+			<div class="col-lg-4 col-md-6 main-article-title">
+						<a class="main-article-tag">{{ article.category }}</a>
+							<span class="point">•</span>
+						<a class="main-article-tag-area">{{ article.region }}</a>
+						<a href="{{ article.get_absolute_url }}" class="main-article-article">
+							<h3>{{ article.title }}</h3>
+						</a>
+						<p>{{ article.short_description }}</p>
+						<a class="main-article-button" href="{{ article.get_absolute_url }}">ЧИТАТЬ ПОЛНОСТЬЮ</a>
+			</div>
+		{% endfor %}
+		</div>
+	</section>
+<!-- Main end -->
+<!-- Latest-news start -->
+<section class="container-fluid latest-news">
+	<div class="row no-gutters">
+		<div class="header-layout col-12">
+			<h3 class="title-layout">Последние новости</h3>
+		</div>
+		<div class="col-lg-4 col-md-6 latest-news-block1">
+			{% for news in latest_news_block_1 %}
+				<div class="news-row">
+					<a class="tag-article">{{ news.category }}</a>
+						<span class="point">•</span>
+					<a class="tag-area-article">{{ news.region }}</a>
+					<a href="{{ news.get_absolute_url }}" class="article">
+						<h3>{{ news.title }}</h3>
+					</a>
+					<time>
+						<span class="date-posted">{{ news.published }}</span>
+					</time>
+				</div>
+			{% endfor %}
+		</div>
+		<div class="col-lg-4 col-md-6 latest-news-block2">
+			{% for news in latest_news_block_2 %}
+				<div class="news-row">
+					<a class="tag-article">{{ news.category }}</a>
+						<span class="point">•</span>
+					<a class="tag-area-article">{{ news.region }}</a>
+					<a href="{{ news.get_absolute_url }}" class="article">
+						<h3>{{ news.title }}</h3>
+					</a>
+					<time>
+						<span class="date-posted">{{ news.published }}</span>
+					</time>
+				</div>
+			{% endfor %}
+		</div>
+			{% for news in latest_news_block_2|slice:'1:2' %}
+				<div class="col-lg-4 col-md-6  latest-news-article-image">
+					<img src="{{ news.image.url }}" alt="news">
+				</div>
+			{% endfor %}
+		</div>
+</section>
+<!-- Latest-news end -->
+<!-- Analytica start -->
+<section class="container-fluid analytica-post">
+	<div class="row no-gutters">
+		<div class="header-layout col-12">
+			<a href="{% url 'analytica' %}" class="title-layout">Аналитика</a>
+		</div>
+			{% for news in latest_analytica %}
+				<div class="analytica-block col-lg-4 col-md-6 pr-2">
+					<div class="analytica-block-img">
+						<img src="{{ news.image.url }}" alt="news">
+					</div>
+					<div class="article-block">
+						<a class="tag-article">{{ news.category }}</a>
+							<span class="point">•</span>
+						<a class="tag-area-article">{{ news.region }}</a>
+						<a href="{{ news.get_absolute_url }}" class="article">
+							<h3>{{ news.title }}</h3>
+						</a>
+						<p class="intro">
+							{{ news.short_description }}
+						</p>
+						<time>
+							<span class="date-posted">{{ news.published }}</span>
+						</time>
+					</div>
+				</div>
+			{% endfor %}
+			<div class="analytica-read-more col-12">
+				<a class="analytica-button" href="{% url 'analytica' %}">ВСЯ АНАЛИТИКА</a>
+			</div>
+</section>
+<!-- Analytica end -->
+<!-- Social-survey start -->
+<section class="container-fluid social-survey">
+	<div class="row no-gutters">
+		<div class="header-layout col-12">
+			<a href="{% url 'poll_archive' %}" class="title-layout">Последний опрос</a>
+		</div>
+		<div class="social-survey-title col-12">
+				<h3>{{ latest_poll.question_text }}</h3>
+		</div>
+			{% for poll in latest_poll.choice_set.all %}
+				<div class="col-lg-6 col-md-6">
+					<h4 class="bar-title">{{ poll.choice_text }}</h4>
+				</div>
+				<div class="col-lg-6 col-md-6 poll-bar">
+					<div class="bar">
+						<div class="bar-inner bar-poll-1" style="width:{{ poll.votes }}%" data-percent="{{ poll.votes }}%"></div>
+					</div>
+				</div>
+			{% endfor %}
+		<div class="social-survey-end col-12">
+			<h5>{{ latest_poll.description }}</h5>
+		</div>
+		<div class="social-survey-button col-12">
+			<a class="analytica-button text-right" href="{% url 'poll_archive' %}">Архив опросов</a>
+		</div>
+	</div>
+</section>
+<!-- Social-survey end -->
+{% endblock content %}
+<!-- Home page end -->

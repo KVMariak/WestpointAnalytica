@@ -1,0 +1,25 @@
+{% load static %}
+<div class="col-lg-3 topical-news">
+        <h1>Читайте также</h1>
+        <div class="single-news-row">
+            {% for article in random_article %}
+            <a href="/" class="tag-article">{{ article.category }}</a>
+            <a href="single.html" class="article">
+              <h3>{{ article.title }}</h3>
+            </a>
+            <time>
+              <span class="date-posted">{{ article.published }}</span>
+            </time>
+
+            {% endfor %}
+          </div>
+          <div class="single-news-row">
+            <a href="/" class="tag-article">АНАЛИТИКА</a>
+            <a href="single.html" class="article">
+              <h3>Обзор международной санкционной политики (апрель 2020)</h3>
+            </a>
+            <time>
+              <span class="date-posted">29 Ноября 2019</span>
+            </time>
+          </div>
+      </div>

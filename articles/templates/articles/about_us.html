@@ -1,0 +1,21 @@
+<!-- About us page start -->
+{% extends 'articles/base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="container-fluid about-us">
+	<div class="row no-gutters">
+		<div class="col-lg-5 col-md-5 about-us-title">
+			<h1>О НАС</h1>
+				<p>
+					Westpoint analytica – это независимый, некоммерческий аналитический центр, который занимается исследованием в политическом, экономическом секторе.
+					Целью аналитического центра является изучение текущих политических процессов в мире на основе современных, традиционных знаний и целостного мировоззрения, которые обеспечивают переход к системе эффективного политического  управления.
+				</p>
+		</div>
+		<div class="col-lg-7 col-md-7 about-us-img">
+			<img src="{% static 'images/about-us/about-us2.png' %}" alt="news">
+		</div>
+	</div>
+</section>
+{% endblock content %}
+<!-- About us page end -->

@@ -1,0 +1,27 @@
+<!-- Archive page start -->
+{% extends 'articles/base.html' %}
+
+{% block content %}
+<section class="container-fluid archive-year">
+    <div class="row no-gutters">
+        <div class="col-12 archive-year-title">
+            <h1 class="archive-title">
+              Архив статтей
+            </h1>
+        </div>
+        {% for year in archive_year %}
+            <div class="col-2 year">
+                <a href="{% url 'archive_detail' year.url %}">
+                    <h1>
+                        {{ year.year_name }}
+                    </h1>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock content %}
+<!-- Archive page end -->
+
+
+

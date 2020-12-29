@@ -1,0 +1,56 @@
+<!-- Analytica page start -->
+{% extends 'articles/base.html' %}
+
+{% block content %}
+<section class="container-fluid analytica">
+    <div class="row no-gutters">
+        {% for articles in analytica_list.object_list %}
+            <div class="analytica-block col-lg-4 col-md-6 pr-2">
+                <div class="analytica-block-img">
+                    <img src="{{ articles.image.url }}" alt="news">
+                </div>
+                <a class="tag-article">{{ articles.category }}</a>
+                    <span class="point">•</span>
+                <a class="tag-area-article">{{ articles.region }}</a>
+                <a href="{{ articles.get_absolute_url }}" class="article">
+                    <h3>{{ articles.title }}</h3>
+                </a>
+                    <p class="intro">
+                        {{ articles.short_description }}
+                    </p>
+                    <time>
+                        <span class="date-posted">{{ articles.published }}</span>
+                    </time>
+            </div>
+        {% endfor %}
+
+        {% if is_paginated %}
+            <div class="analytica-pagination col-12">
+                 <nav>
+                     <ul class="pagination">
+                         <li class="pagination-item {% if not prev_url %} disabled {% endif %}">
+                             <a class="pagination-link" href="{{ prev_url }}">Предыдущая</a>
+                         </li>
+                             {% for n in analytica_list.paginator.page_range %}
+                                 {% if analytica_list.number == n %}
+                                     <li class="pagination-item pg-active">
+                                         <a class="pagination-link" href="?page={{ n }}">{{ n }}</a>
+                                     </li>
+                                 {% elif n > analytica_list.number|add:-3 and n < analytica_list.number|add:3 %}
+                                     <li class="pagination-item">
+                                         <a class="pagination-link" href="?page={{ n }}">{{ n }}</a>
+                                     </li>
+                                 {% endif %}
+                             {% endfor %}
+                         <li class="pagination-item {% if not next_url %} disabled {% endif %}">
+                             <a class="pagination-link" href="{{ next_url }}">Следующая</a>
+                         </li>
+                     </ul>
+                 </nav>
+            </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock content %}
+<!-- Analytica page end -->
+

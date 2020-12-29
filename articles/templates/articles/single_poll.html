@@ -1,0 +1,29 @@
+<!-- Single poll start -->
+{% extends 'articles/base.html' %}
+
+{% block content %}
+<section class="container-fluid social-survey-single">
+    <div class="row no-gutters">
+        <div class="social-survey-title col-12">
+          <h3>{{ poll.question_text }}</h3>
+        </div>
+            {% for poll_questions in poll.choice_set.all %}
+                <div class="col-lg-6 col-md-6">
+                    <h4 class="bar-title">{{ poll_questions.choice_text }}</h4>
+                </div>
+        <div class="col-lg-6 col-md-6 poll-bar">
+            <div class="bar">
+                <div class="bar-inner bar-poll-1" style="width:{{ poll_questions.votes }}%" data-percent="{{ poll_questions.votes }}%"></div>
+            </div>
+        </div>
+            {% endfor %}
+                <div class="social-survey-end col-12">
+                    <h5>{{ poll.description }}</h5>
+                </div>
+                <div class="social-survey-button col-12">
+                    <a class="analytica-button text-right" href="{% url 'poll_archive' %}">Вернутся к Архиву</a>
+                </div>
+    </div>
+</section>
+{% endblock content %}
+<!-- Single poll start -->

@@ -1,0 +1,54 @@
+<!-- Poll archive page start -->
+{% extends 'articles/base.html' %}
+
+{% block content %}
+<section class="container-fluid archive-year">
+    <div class="row no-gutters">
+        <div class="col-12 archive-year-title">
+            <h1 class="archive-title">
+                Архив опросов
+            </h1>
+        </div>
+            {% for polls_list in poll_archive_list.object_list %}
+            <div class="col-lg-6 col-md-6">
+                <div class="poll-achive-row">
+                    <a class="tag-article">ОПРОС</a>
+                        <span class="point">•</span>
+                    <a class="tag-area-article">{{ polls_list.status }}</a>
+                    <a href="{% url 'poll_detail' polls_list.url %}" class="article">
+                        <h3>{{ polls_list.question_text }}</h3>
+                    </a>
+                    <time>
+                        <span class="date-posted">{{ polls_list.pub_date }}</span>
+                    </time>
+                </div>
+            </div>
+            {% endfor %}
+        {% if is_paginated %}
+        <div class="analytica-pagination col-12">
+            <nav>
+                <ul class="pagination">
+                    <li class="pagination-item {% if not prev_url %} disabled {% endif %}">
+                        <a class="pagination-link" href="{{ prev_url }}">Предыдущая</a>
+                    </li>
+                        {% for n in poll_archive_list.paginator.page_range %}
+                            {% if poll_archive_list.number == n %}
+                                <li class="pagination-item pg-active">
+                                    <a class="pagination-link" href="?page={{ n }}">{{ n }}</a>
+                                </li>
+                            {% elif n > poll_archive_list.number|add:-3 and n < poll_archive_list.number|add:3 %}
+                                <li class="pagination-item">
+                                    <a class="pagination-link" href="?page={{ n }}">{{ n }}</a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                                <li class="pagination-item {% if not next_url %} disabled {% endif %}">
+                                    <a class="pagination-link" href="{{ next_url }}">Следующая</a>
+                                </li>
+                </ul>
+            </nav>
+        </div>
+        {% endif %}
+</section>
+{% endblock content %}
+<!-- Poll archive page end -->

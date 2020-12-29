@@ -1,0 +1,27 @@
+<!-- Contact us page start -->
+{% extends 'articles/base.html' %}
+
+{% block content %}
+<section class="contacts">
+    <div class="container-fluid">
+        <div class="row no-gutters">
+            <div class="col-lg-5 col-md-6 contact-us">
+                <div class="contact">Связаться с нами</div>
+                    <p>Phone: <span>(+48) 604 234 091</span></p>
+                    <p>E-mail: <span>analytica.westpoint@gmail.com</span></p>
+            </div>
+            <div class="col-lg-4 col-md-6 feedback">
+                <div class="contact-feedback">Обратная связь</div>
+                    <form action="{% url 'contacts' %}" method="post">
+                        {% csrf_token %}
+                        <input type="text" name="name" placeholder="Введите ваше имя">
+                        <input type="email" name="email" placeholder="Введите ваш e-mail">
+                        <textarea name="text"></textarea>
+                        <button>ОТПРАВИТЬ</button>
+                    </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}
+<!-- Contact us page end -->

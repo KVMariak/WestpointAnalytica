@@ -1,0 +1,35 @@
+{% load static %}
+  <footer>
+    <div class="container-fluid footer">
+      <hr class="block-separator">
+          <div class="row no-gutters">
+             <div class="col-6 footer-nav">
+            <ul>
+              <nav>
+                <li><a href="{% url 'index' %}">На главную</a></li>
+                <li><a href="{% url 'about_us' %}">О нас</a></li>
+            <li><a href="{% url 'news' %}">Новости</a></li>
+            <li><a href="{% url 'analytica' %}">Аналитика</a></li>
+            <li><a href="{% url 'contacts' %}">Контакты</a></li>
+            <li><a href="{% url 'archive' %}">Архив</a></li>
+          </nav>
+            </ul>
+          </div>
+            <div class="col-6 footer-social">
+            <ul>
+            <p class="footer-social-title">Мы в социальных сетях:</p>
+              <li class="facebook"><a href=""><img src="{% static 'images/social-network/facebook1.png' %}" width="25" height="25" alt="facebook"></a></li>
+              <li class="telegram"><a href=""><img src="{% static 'images/social-network/telegram1.png' %}" width="25" height="25" alt="facebook"></a></li>
+              <li class="google-plus"><a href=""><img src="{% static 'images/social-network/google-plus1.png' %}" width="25" height="25" alt="facebook"></a></li>
+            </ul>
+            </div>
+              <div class="col-12 footer-wp">
+                <p>
+                  © 2020 ANALYTICA WESTPOINT. Соглашение об обработке персональных данных.
+Политика конфиденциальности и условия обработки персональных данных
+                </p>
+              </div>
+
+            </div>
+         </div>
+  </footer>

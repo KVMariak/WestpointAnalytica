@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% load static %}
+  <header class="header">
+    <div class="container-fluid navigation-menu">
+      <div class="row no-gutters navigation">
+          <div class="col-md-3 header-logo">
+            <a href="{% url 'index' %}"><img src="{% static 'images/logo/logo.png' %}" width="240" height="75.15"></a>
+            <div class="header-burger">
+              <span></span>
+            </div>
+          </div>
+          <div class="col-md-9">
+            <nav class="header-menu">
+              <ul class="header-list">
+                <li><a href="{% url 'about_us' %}">О НАС</a></li>
+                <li><a href="{% url 'news' %}">НОВОСТИ</a></li>
+                <li><a href="{% url 'analytica' %}">АНАЛИТИКА</a></li>
+                <li><a href="{% url 'contacts' %}">КОНТАКТЫ</a></li>
+                <li><a href="{% url 'archive' %}">АРХИВ</a></li>
+              </ul>
+            </nav>
+          </div>
+          <hr class="block-separator">
+        </div>
+      </div>
+  </header>

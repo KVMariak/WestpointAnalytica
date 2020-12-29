@@ -1,0 +1,151 @@
+<!-- Archive year page start -->
+{% extends 'articles/base.html' %}
+
+{% block content %}
+<section class="container-fluid archive-year">
+    <div class="row no-gutters">
+        <div class="col-12 archive-year-title">
+            <h1 class="archive-title">
+                {{ year.name }}
+            </h1>
+        </div>
+        <div class="col-lg-2 col-md-4 month">
+            <p>ДЕКАБРЬ</p>
+            {% for archive in archive_articles %}
+                {% if archive.published|date:"m" == "12" and archive.published|date:"Y" == year.url %}
+                    <a href="{{ archive.get_absolute_url }}">{{ archive.title }}</a>
+                    <time>
+                      <span class="date-posted">{{ archive.published }}</span>
+                    </time>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="col-lg-2 col-md-4 month">
+            <p>НОЯБРЬ</p>
+            {% for archive in archive_articles %}
+                {% if archive.published|date:"m" == "11" and archive.published|date:"Y" == year.url %}
+                    <a href="{{ archive.get_absolute_url }}">{{ archive.title }}</a>
+                    <time>
+                        <span class="date-posted">{{ archive.published }}</span>
+                    </time>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="col-lg-2 col-md-4 month">
+            <p>ОКТЯБРЬ</p>
+                {% for archive in archive_articles %}
+                    {% if archive.published|date:"m" == "10" and archive.published|date:"Y" == year.url %}
+                        <a href="{{ archive.get_absolute_url }}">{{ archive.title }}</a>
+                        <time>
+                            <span class="date-posted">{{ archive.published }}</span>
+                        </time>
+                    {% endif %}
+                {% endfor %}
+        </div>
+        <div class="col-lg-2 col-md-4 month">
+            <p>СЕНТЯБРЬ</p>
+                {% for archive in archive_articles %}
+                    {% if archive.published|date:"m" == "09" and archive.published|date:"Y" == year.url %}
+                        <a href="{{ archive.get_absolute_url }}">{{ archive.title }}</a>
+                        <time>
+                            <span class="date-posted">{{ archive.published }}</span>
+                        </time>
+                    {% endif %}
+                {% endfor %}
+        </div>
+        <div class="col-lg-2 col-md-4 month">
+            <p>АВГУСТ</p>
+                {% for archive in archive_articles %}
+                    {% if archive.published|date:"m" == "08" and archive.published|date:"Y" == year.url %}
+                        <a href="{{ archive.get_absolute_url }}">{{ archive.title }}</a>
+                            <time>
+                              <span class="date-posted">{{ archive.published }}</span>
+                            </time>
+                    {% endif %}
+                {% endfor %}
+        </div>
+        <div class="col-lg-2 col-md-4 month">
+            <p>ИЮЛЬ</p>
+                {% for archive in archive_articles %}
+                    {% if archive.published|date:"m" == "07" and archive.published|date:"Y" == year.url %}
+                        <a href="{{ archive.get_absolute_url }}">{{ archive.title }}</a>
+                        <time>
+                          <span class="date-posted">{{ archive.published }}</span>
+                        </time>
+                    {% endif %}
+                {% endfor %}
+        </div>
+        <div class="col-lg-2 col-md-4 month">
+            <p>ИЮНЬ</p>
+                {% for archive in archive_articles %}
+                    {% if archive.published|date:"m" == "06" and archive.published|date:"Y" == year.url %}
+                        <a href="{{ archive.get_absolute_url }}">{{ archive.title }}</a>
+                        <time>
+                          <span class="date-posted">{{ archive.published }}</span>
+                        </time>
+                    {% endif %}
+                {% endfor %}
+        </div>
+        <div class="col-lg-2 col-md-4 month">
+            <p>МАЙ</p>
+                {% for archive in archive_articles %}
+                    {% if archive.published|date:"m" == "05" and archive.published|date:"Y" == year.url %}
+                        <a href="{{ archive.get_absolute_url }}">{{ archive.title }}</a>
+                        <time>
+                          <span class="date-posted">{{ archive.published }}</span>
+                        </time>
+                    {% endif %}
+                {% endfor %}
+        </div>
+        <div class="col-lg-2 col-md-4 month">
+            <p>АПРЕЛЬ</p>
+                {% for archive in archive_articles %}
+                    {% if archive.published|date:"m" == "04" and archive.published|date:"Y" == year.url %}
+                        <a href="{{ archive.get_absolute_url }}">{{ archive.title }}</a>
+                        <time>
+                          <span class="date-posted">{{ archive.published }}</span>
+                        </time>
+                    {% endif %}
+                {% endfor %}
+        </div>
+        <div class="col-lg-2 col-md-4 month">
+            <p>МАРТ</p>
+                {% for archive in archive_articles %}
+                    {% if archive.published|date:"m" == "03" and archive.published|date:"Y" == year.url %}
+                        <a href="{{ archive.get_absolute_url }}">{{ archive.title }}</a>
+                        <time>
+                          <span class="date-posted">{{ archive.published }}
+                          </span>
+                        </time>
+                    {% endif %}
+                {% endfor %}
+        </div>
+        <div class="col-lg-2 col-md-4 month">
+            <p>ФЕВРАЛЬ</p>
+                {% for archive in archive_articles %}
+                    {% if archive.published|date:"m" == "03" and archive.published|date:"Y" == year.url %}
+                        <a href="{{ archive.get_absolute_url }}">{{ archive.title }}</a>
+                        <time>
+                          <span class="date-posted">{{ archive.published }}</span>
+                        </time>
+                    {% endif %}
+                {% endfor %}
+        </div>
+        <div class="col-lg-2 col-md-4 month">
+            <p>ЯНВАРЬ</p>
+                {% for archive in archive_articles %}
+                    {% if archive.published|date:"m" == "01" and archive.published|date:"Y" == year.url  %}
+                        <a href="{{ archive.get_absolute_url }}">{{ archive.title }}</a>
+                        <time>
+                          <span class="date-posted">{{ archive.published }}</span>
+                        </time>
+                    {% endif %}
+                {% endfor %}
+        </div>
+        <div class="social-survey-button col-12">
+            <a class="analytica-button text-right" href="{% url 'archive' %}">Вернутся к Архиву</a>
+        </div>
+    </div>
+</section>
+{% endblock content %}
+<!-- Archive year page end -->

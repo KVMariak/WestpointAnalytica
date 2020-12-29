@@ -1,0 +1,74 @@
+<!-- News page start -->
+{% extends 'articles/base.html' %}
+
+{% block content %}
+<section class="container-fluid news-page">
+    <div class="row no-gutters">
+        {% for news in news_top %}
+            <div class="col-lg-4 col-md-6 main-article-title">
+                <a class="main-article-tag">{{ news.category }}</a>
+                    <span class="point">•</span>
+                <a class="main-article-tag-area">{{ news.region }}</a>
+                <a href="{{ news.get_absolute_url }}" class="main-article-article">
+                    <h3>{{ news.title }}</h3>
+                </a>
+                <p>{{ news.short_description }}</p>
+                <a class="main-article-button" href="{{ news.get_absolute_url }}">ЧИТАТЬ ПОЛНОСТЬЮ</a>
+            </div>
+            <div class="col-lg-8 pr-2 col-md-6 main-article-img ">
+                <div class="main-news-images">
+                <img src="{{ news.image.url }}" alt="news">
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+<section class="container-fluid news-page2">
+    <div class="row no-gutters">
+        {% for news in news_list.object_list %}
+            <div class="analytica-block col-lg-4 col-md-6 pr-2">
+                <div class="analytica-block-img">
+                    <img src="{{ news.image.url }}" alt="news">
+                </div>
+                <a class="tag-article">{{ news.category }}</a>
+                    <span class="point">•</span>
+                <a class="tag-area-article">{{ news.region }}</a>
+                <a href="{{ news.get_absolute_url }}" class="article">
+                    <h3>{{ news.title }}</h3>
+                </a>
+                <time>
+                    <span class="date-posted">{{ news.published }}</span>
+                </time>
+            </div>
+        {% endfor %}
+        {% if is_paginated %}
+        <div class="analytica-pagination col-12">
+            <nav>
+                <ul class="pagination">
+                    <li class="pagination-item {% if not prev_url %} disabled {% endif %}">
+                        <a class="pagination-link" href="{{ prev_url }}">Предыдущая</a>
+                    </li>
+                        {% for n in news_list.paginator.page_range %}
+                            {% if news_list.number == n %}
+                                <li class="pagination-item pg-active">
+                                    <a class="pagination-link" href="?page={{ n }}">{{ n }}</a>
+                                </li>
+                            {% elif n > news_list.number|add:-3 and n < news_list.number|add:3 %}
+                                <li class="pagination-item">
+                                    <a class="pagination-link" href="?page={{ n }}">{{ n }}</a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                                <li class="pagination-item {% if not next_url %} disabled {% endif %}">
+                                    <a class="pagination-link" href="{{ next_url }}">Следующая</a>
+                                </li>
+                </ul>
+            </nav>
+        </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock content %}
+<!-- News page end -->
+
+

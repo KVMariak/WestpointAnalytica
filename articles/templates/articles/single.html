@@ -1,0 +1,44 @@
+<!-- Single page start -->
+{% extends 'articles/base.html' %}
+
+{% block content %}
+<section class="container-fluid single-page">
+    <div class="row no-gutters">
+        <div class="col-lg-3 topical-news">
+            <h1>Читайте также</h1>
+                {% for read_also in random_article %}
+                    {% if article.url != read_also.url %}
+                        <div class="single-news-row">
+                            <a href="/" class="tag-article">{{ read_also.category }}</a>
+                            <a href="single.html" class="article">
+                            <h3>{{ read_also.title }}</h3>
+                            </a>
+                            <time>
+                                <span class="date-posted">{{ read_also.published }}</span>
+                            </time>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+        </div>
+        <div class="col-lg-9 single-page-img">
+            <img src="{{ article.image.url }}" alt="news">
+                <div class="col-lg-10 single-article">
+                    <a class="tag-article-single">{{ article.category }}</a>
+                        <span class="point"></span>
+                    <a class="tag-area-article-single">{{ article.published }}</a>
+                    <h1>
+                        {{ article.title }}
+                    </h1>
+                    <p class="head">{{ article.short_description}}</p>
+                    <p>
+                        {{ article.long_description|safe }}
+                    </p>
+                    <div class="social-survey-button col-12">
+                        <a class="analytica-button text-right" href="{% url 'index' %}">Возврат к списку</a>
+                    </div>
+                </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}
+<!-- Single page end -->
